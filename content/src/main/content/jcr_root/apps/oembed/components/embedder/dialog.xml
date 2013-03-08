@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:TabPanel"
+    activeTab="0"
+    helpPath="en/cq/current/wcm/default_components.html#Text Image"
+    xtype="tabpanel">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <tab1
+            jcr:primaryType="cq:Widget"
+            anchor="100%"
+            title="Auto discovery"
+            xtype="panel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <url
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Web page address"
+                    name="./webpage"
+                    xtype="textfield"/>
+            </items>
+        </tab1>
+        <tab2
+            jcr:primaryType="cq:Widget"
+            anchor="100%"
+            title="Link"
+            xtype="panel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <endpoint
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="API Endpoint"
+                    name="./endpoint"
+                    type="combobox"
+                    xtype="selection">
+                    <options jcr:primaryType="cq:WidgetCollection">
+                        <Flickr
+                            jcr:primaryType="nt:unstructured"
+                            text="http://www.flickr.com/services/oembed/"
+                            value="http://www.flickr.com/services/oembed/"/>
+                        <YouTube
+                            jcr:primaryType="nt:unstructured"
+                            text="http://www.youtube.com/oembed"
+                            value="http://www.youtube.com/oembed"/>
+                    </options>
+                </endpoint>
+                <url
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="URL"
+                    name="./url"
+                    xtype="textfield"/>
+                <max
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Maximal Size"
+                    heightParameter="./maxHeight"
+                    widthParameter="./maxWidth"
+                    xtype="sizefield"/>
+            </items>
+        </tab2>
+    </items>
+</jcr:root>
