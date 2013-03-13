@@ -13,6 +13,8 @@ import org.apache.tika.exception.TikaException;
 import org.apache.tika.sax.Link;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 
@@ -22,6 +24,7 @@ public class OEmbedRenderer {
 	private JSONObject data;
 	private HttpClient client = new HttpClient();
 	private LinkFinder linkFinder = new LinkFinder();
+	private final Logger logger = LoggerFactory. getLogger(OEmbedRenderer.class);
 
 	public boolean discoverLink(String url) {
 		HttpMethod method = null;
@@ -53,7 +56,7 @@ public class OEmbedRenderer {
         	try {
 				url = URLEncoder.encode(url, "UTF-8");
 			} catch (UnsupportedEncodingException e) {
-				throw new RuntimeException(e); // TODO: use specific exception type
+				throw new OEmbedException(e);
 			}
         	String requestUrl = endpoint + "?url=" + url +
         			"&format=json";
@@ -67,6 +70,7 @@ public class OEmbedRenderer {
 	}
 	
 	public boolean fetchResponse(String requestUrl) {
+		logger.debug("Requesting URL " + requestUrl);
 		HttpMethod method = null;
         try {
 			method = new GetMethod(requestUrl);

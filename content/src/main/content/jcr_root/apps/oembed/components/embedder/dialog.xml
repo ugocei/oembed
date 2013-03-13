@@ -39,6 +39,18 @@
                             jcr:primaryType="nt:unstructured"
                             text="http://www.youtube.com/oembed"
                             value="http://www.youtube.com/oembed"/>
+                        <Hulu
+                            jcr:primaryType="nt:unstructured"
+                            text="http://www.hulu.com/api/oembed.json"/>
+                        <Vimeo
+                            jcr:primaryType="nt:unstructured"
+                            text="http://vimeo.com/api/oembed.json"/>
+                        <SmugMug
+                            jcr:primaryType="nt:unstructured"
+                            text="http://api.smugmug.com/services/oembed/"/>
+                        <SlideShare
+                            jcr:primaryType="nt:unstructured"
+                            text="http://www.slideshare.net/api/oembed/2"/>
                     </options>
                 </endpoint>
                 <url
