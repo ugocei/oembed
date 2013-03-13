@@ -20,7 +20,7 @@
     } else if (webpage != null) {
 		found = renderer.discoverLink(webpage);
     } else {
-%><p>Double-click to configure.</p><%
+%><p>OEmbed - Double-click to configure.</p><%
     }
 	if (found) {
 		String title = renderer.getTitle();

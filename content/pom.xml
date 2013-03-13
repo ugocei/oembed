@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.adobe.aem.wcm.components</groupId>
         <artifactId>oembed</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <!-- ====================================================================== -->
@@ -45,7 +45,7 @@
                 <artifactId>content-package-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <group>com.adobe.aem.wcm.components.oembed</group>
+                    <group>day_internal/presales</group>
                     <filters>
                         <filter>
                             <root>/apps/oembed</root>
