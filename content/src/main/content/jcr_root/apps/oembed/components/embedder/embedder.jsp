@@ -19,8 +19,6 @@
 		found = renderer.fetchResponse(endpoint, url, maxWidth, maxHeight);
     } else if (webpage != null) {
 		found = renderer.discoverLink(webpage);
-    } else {
-%><p>OEmbed - Double-click to configure.</p><%
     }
 	if (found) {
 		String title = renderer.getTitle();
