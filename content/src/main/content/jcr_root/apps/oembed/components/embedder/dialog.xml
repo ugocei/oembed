@@ -13,6 +13,7 @@
             <items jcr:primaryType="cq:WidgetCollection">
                 <url
                     jcr:primaryType="cq:Widget"
+                    fieldDescription="Provide the URL of a page that supports oEmbed auto-discovery"
                     fieldLabel="Web page address"
                     name="./webpage"
                     xtype="textfield"/>
@@ -26,6 +27,7 @@
             <items jcr:primaryType="cq:WidgetCollection">
                 <endpoint
                     jcr:primaryType="cq:Widget"
+                    fieldDescription="Provide the API endpoint of a site that supports oEmbed or choose one from the list.&#xa;See http://oembed.com/ for details."
                     fieldLabel="API Endpoint"
                     name="./endpoint"
                     type="combobox"
@@ -55,11 +57,13 @@
                 </endpoint>
                 <url
                     jcr:primaryType="cq:Widget"
+                    fieldDescription="Provide the URL of a page that supports oEmbed."
                     fieldLabel="URL"
                     name="./url"
                     xtype="textfield"/>
                 <max
                     jcr:primaryType="cq:Widget"
+                    fieldDescription="Input the maximum desired size of the embedded image."
                     fieldLabel="Maximal Size"
                     heightParameter="./maxHeight"
                     widthParameter="./maxWidth"
