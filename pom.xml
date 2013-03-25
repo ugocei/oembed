@@ -19,6 +19,13 @@
     <properties>
         <crx.host>localhost</crx.host>
         <crx.port>4502</crx.port>
+        <sling.host>http://localhost</sling.host>
+        <sling.port>4502</sling.port>
+        <sling.user>admin</sling.user>
+        <sling.password>admin</sling.password>
+        <sling.server>${sling.host}:${sling.port}</sling.server>
+        <sling.plugin.install.path>/apps/${app.name}/install</sling.plugin.install.path>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
@@ -32,7 +39,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>2.3.6</version>
+                    <version>2.3.7</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -46,14 +53,24 @@
                     <version>2.5</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.sling</groupId>
                     <artifactId>maven-sling-plugin</artifactId>
-                    <version>2.0.6</version>
+                    <version>2.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>com.day.jcr.vault</groupId>
                     <artifactId>content-package-maven-plugin</artifactId>
-                    <version>0.0.13</version>
+                    <version>0.0.20</version>
                 </plugin>
                 <!--This plugin's configuration is used to store Eclipse
                     m2e settings only. It has no influence on the Maven build itself. -->
@@ -127,26 +144,90 @@
     </dependencyManagement>
 
     <profiles>
-        <profile>
-            <id>autoInstallBundle</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.sling</groupId>
-                        <artifactId>maven-sling-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>install-bundle</id>
-                                <goals>
-                                    <goal>install</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+      <profile>
+          <id>installPackage</id>
+          <activation>
+              <activeByDefault>false</activeByDefault>
+          </activation>
+          <build>
+              <pluginManagement>
+                  <plugins>
+                      <plugin>
+                          <groupId>com.day.jcr.vault</groupId>
+                          <artifactId>content-package-maven-plugin</artifactId>
+                          <executions>
+                              <execution>
+                                  <id>content-package-install</id>
+                                  <phase>package</phase>
+                                  <goals>
+                                      <goal>install</goal>
+                                  </goals>
+                                  <configuration>
+                                      <userId>${sling.user}</userId>
+                                      <password>${sling.password}</password>
+                                      <targetURL>${sling.server}/crx/packmgr/service.jsp</targetURL>
+                                      <verbose>true</verbose>
+                                      <failOnError>true</failOnError>
+                                  </configuration>
+                              </execution>
+                          </executions>
+                      </plugin>
+                  </plugins>
+              </pluginManagement>
+          </build>
+      </profile>
+
+      <profile>
+          <id>installBundle</id>
+          <activation>
+              <activeByDefault>false</activeByDefault>
+          </activation>
+          <build>
+              <pluginManagement>
+                  <plugins>
+                      <plugin>
+                          <groupId>org.apache.sling</groupId>
+                          <artifactId>maven-sling-plugin</artifactId>
+                          <executions>
+                              <execution>
+                                  <id>install</id>
+                                  <phase>package</phase>
+                                  <goals>
+                                      <goal>install</goal>
+                                  </goals>
+                              </execution>
+                          </executions>
+                          <configuration>
+                              <slingUrl>${sling.server}/crx/repository/crx.default</slingUrl>
+                              <slingUrlSuffix>${sling.plugin.install.path}</slingUrlSuffix>
+                              <user>${sling.user}</user>
+                              <password>${sling.password}</password>
+                              <usePut>true</usePut>
+                          </configuration>
+                      </plugin>
+                  </plugins>
+              </pluginManagement>
+          </build>
+      </profile>
     </profiles>
+
+    <repositories>
+        <repository>
+            <id>adobe-external-central</id>
+            <name>Adobe Proxy Repository</name>
+            <url>http://repo.adobe.com/archiva/repository/day-central</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>adobe-external-central</id>
+            <name>Adobe Proxy Repository</name>
+            <url>http://repo.adobe.com/archiva/repository/day-central</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
+    
   <modules>
     <module>bundle</module>
     <module>content</module>
