@@ -2,8 +2,6 @@
 
   OEmbed Embedder component.
 
-  
-
 --%><%
 %><%@include file="/libs/foundation/global.jsp"%><%
 %><%@page import="com.adobe.aem.wcm.components.oembed.OEmbedRenderer,
@@ -21,6 +19,7 @@
 		found = renderer.discoverLink(webpage);
     }
 	if (found) {
+%><div style="margin-bottom:10px;"><%
 		String title = renderer.getTitle();
 		if (title == null) { title = "No title"; }
 		switch (renderer.getType()) {
@@ -38,5 +37,7 @@
 %><a href="<%= renderer.getURL() %>"><%= renderer.getTitle() %></a><%
 	        break;
 	    }
+    } else {
+%><p style="border"><img src="/libs/cq/ui/resources/0.gif" class="cq-text-placeholder" alt=""></p><%
     }
-%>
+%></div>
