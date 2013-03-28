@@ -1,10 +1,10 @@
 CQ5 oEmbed Component
 ====================
 
-This is an [oEmbed](http://oembed.com/) component for [Adobe CQ5](http://www.adobe.com/solutions/web-experience-management.html).
+This is an [oEmbed](http://oembed.com/) component for [Adobe AEM](http://www.adobe.com/solutions/web-experience-management.html).
 oEmbed provides an easy way to embed into a website digital media or HTML snippets which are hosted on a different website. This component makes it easy to include into a web page images or videos that are hosted on public websites such as YouTube for videos, or Flickr for images.
 
-In order to use the oEmbed component, you just need to drag-and-drop the comonent from the CQ5 sidekick onto the page.
+In order to use the oEmbed component, you just need to drag-and-drop the component from the AEM sidekick onto the page.
 
 Installation
 ------------
