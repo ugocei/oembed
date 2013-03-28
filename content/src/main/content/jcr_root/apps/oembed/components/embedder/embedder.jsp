@@ -4,8 +4,8 @@
 
 --%><%
 %><%@include file="/libs/foundation/global.jsp"%><%
-%><%@page import="com.adobe.aem.wcm.components.oembed.OEmbedRenderer,
-    com.adobe.aem.wcm.components.oembed.OEmbedType" %><%
+%><%@page import="com.adobe.cq.components.oembed.OEmbedRenderer,
+    com.adobe.cq.components.oembed.OEmbedType" %><%
    	String endpoint = properties.get("endpoint", String.class);
 	String url = properties.get("url", String.class);
    	String webpage = properties.get("webpage", String.class);

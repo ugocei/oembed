@@ -6,7 +6,7 @@
     <!-- P A R E N T P R O J E C T D E S C R I P T I O N -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.adobe.aem.wcm.components</groupId>
+        <groupId>com.adobe.cq.components</groupId>
         <artifactId>oembed</artifactId>
         <version>1.0</version>
     </parent>
@@ -45,7 +45,7 @@
                 <artifactId>content-package-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <group>day_internal/presales</group>
+                    <group>day/cq561/demo</group>
                     <filters>
                         <filter>
                             <root>/apps/oembed</root>

@@ -1,4 +1,4 @@
-package com.adobe.aem.wcm.components.oembed;
+package com.adobe.cq.components.oembed;
 
 public class OEmbedException extends RuntimeException {
 

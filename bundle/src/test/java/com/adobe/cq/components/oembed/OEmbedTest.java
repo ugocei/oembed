@@ -1,4 +1,4 @@
-package com.adobe.aem.wcm.components.oembed;
+package com.adobe.cq.components.oembed;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.apache.tika.sax.Link;
 import org.junit.Test;
+
+import com.adobe.cq.components.oembed.LinkFinder;
+import com.adobe.cq.components.oembed.OEmbedRenderer;
+import com.adobe.cq.components.oembed.OEmbedType;
 
 public class OEmbedTest {
 
